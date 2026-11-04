@@ -807,10 +807,10 @@ app.get('/api/community/leaderboard', async (req: Request, res: Response) => {
 app.get('/api/community/stats', async (req: Request, res: Response) => {
   try {
     const totalWords = await db.get<{ count: number }>('SELECT count(*) as count FROM community_words');
-    const verifiedWords = await db.get<{ count: number }>('SELECT count(*) as count FROM community_words WHERE status = "approved"');
-    const pendingWords = await db.get<{ count: number }>('SELECT count(*) as count FROM community_words WHERE status = "pending"');
+    const verifiedWords = await db.get<{ count: number }>('SELECT count(*) as count FROM community_words WHERE status = \'approved\'');
+    const pendingWords = await db.get<{ count: number }>('SELECT count(*) as count FROM community_words WHERE status = \'pending\'');
     const pronunciations = await db.get<{ count: number }>('SELECT count(*) as count FROM pronunciation_recordings');
-    const totalPhrases = await db.get<{ count: number }>('SELECT count(*) as count FROM community_phrases WHERE status = "approved"');
+    const totalPhrases = await db.get<{ count: number }>('SELECT count(*) as count FROM community_phrases WHERE status = \'approved\'');
     const totalContributors = await db.get<{ count: number }>('SELECT count(*) as count FROM users');
     const totalLanguages = await db.get<{ count: number }>('SELECT count(*) as count FROM languages WHERE is_active = 1');
 
